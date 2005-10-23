@@ -4,13 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 use Carp;
+use Math::Symbolic;
 
 our $BeenUsedBefore    = 0;
 our $Functions         = {};
 our $Order             = [];
 our $RegularExpression = qw//;
 
-our $VERSION = '0.01';
+our $VERSION = '1.00';
 
 sub import {
     my $package = shift;
@@ -63,7 +64,7 @@ EXTENSION
 
 sub _regenerate_regex {
     my $string = join '|', @$Order;
-    $RegularExpression = qr/(?:$string)\(.*?(?<!\\\\)\)/;
+    $RegularExpression = qr/(?:$string)\(.*?(?<!\\)\)/;
 }
 
 1;
@@ -139,9 +140,23 @@ because it has to regenerate the complete Math::Symbolic parser the first
 time you use this module in your code. The run time performance penalty
 should be low, however.
 
+=head1 CAVEATS
+
+Since the module is implemented in a way that won't affect the parse speed a
+lot at runtime, it is somewhat inflexible. The extensions get the actual
+argument string, not a preprocessed form of it. Since the extensions are
+implemented as regular expressions, they cannot correctly parse expressions
+involving balanced parenthesis. See C<perldoc -q nesting> for details.
+For example C<foo(bar(1))> would only match
+the C<foo> call until the first parenthesis. You can escape the inner
+parenthesis like this: C<foo(bar(1\))>. It's not currently possible to escape
+the escape character ('\'). Again: This is a somewhat simple regular expression.
+It's not hard to write a parser for balanced parenthesis with escaping, but its
+nigh on impossible to do this in a single expression.
+
 =head1 AUTHOR
 
-Copyright (C) 2003-2004 Steffen Mueller
+Copyright (C) 2003-2005 Steffen Mueller
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

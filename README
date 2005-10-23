@@ -1,4 +1,4 @@
-Math::SymbolicX::ParserExtensionFactory version 0.01
+Math::SymbolicX::ParserExtensionFactory version 1.00
 ====================================================
 
 This module provides a simple way to extend the Math::Symbolic parser with
@@ -12,6 +12,20 @@ assumed throughout the documentation.
 INSTALLATION
 
 To install this module type the following:
+
+   perl Build.PL
+   ./Build
+   ./Build test
+   ./Build install
+
+On platforms that don't support the "./" notation, that would be:
+
+   perl Build.PL
+   perl Build
+   perl Build test
+   perl Build install
+
+If you wish, you may use the old MakeMaker style instead:
 
    perl Makefile.PL
    make
@@ -45,7 +59,7 @@ Math::Symbolic and Math::Symbolic::Parser for the full scoop if info.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2003-2004 Steffen Mueller
+Copyright (C) 2003-2005 Steffen Mueller
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

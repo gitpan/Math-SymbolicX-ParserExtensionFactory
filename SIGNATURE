@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.44.
+signed via the Module::Signature module, version 0.55.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,20 +14,20 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 ae83d138075ea7b544601196cbd6df026b83f2ed Build.PL
-SHA1 365175c9a9c06859ff931a8096e2cb9f30b8f7b5 Changes
+SHA1 cb83d905290ddb06355f6722a25c3f45d04c07b4 Build.PL
+SHA1 84c05fdc10dcfa9a045d12cdefb902e0d377df65 Changes
 SHA1 119f296481e67d0f572395b72a76a832f3ecedd2 MANIFEST
-SHA1 017eb6172702e971f9fccf1db4e29315e78c9329 META.yml
-SHA1 f1b0e11a91ab3db213a895606aea12ee32510402 Makefile.PL
+SHA1 ffea20ca822495e0d29dcb99e228e409fef73a0c META.yml
+SHA1 19df023edb9a76194a1ae29e81acff8bb38eb7eb Makefile.PL
 SHA1 80dd33005134dd9d2688554bf1c205d12d3a1b66 README
-SHA1 387d3b07bf0755f7f6b21a902ed50ed9c2938dec lib/Math/SymbolicX/ParserExtensionFactory.pm
-SHA1 bb0da54f2b3f2d7955baa41ee458cb3d1887f475 t/00pod.t
-SHA1 2db32c1aac44c2e41530ea63431166d91bd458bf t/00podcover.t
-SHA1 df1cd0a2c6b8703a20e5198684795b32f8d504f4 t/01basic.t
+SHA1 873bd97b42b8078476c8a7a8543ae4680c2c4d44 lib/Math/SymbolicX/ParserExtensionFactory.pm
+SHA1 4be8567b54d7de5de1cbb06a47a67fbc155fa6a5 t/00pod.t
+SHA1 c28c3de0cb1429bd29a7092fe0445e713b86d88b t/00podcover.t
+SHA1 1584dd84e2d1952e8a5b2b4d50db6bbb5ec5f316 t/01basic.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.0 (GNU/Linux)
+Version: GnuPG v1.4.3 (GNU/Linux)
 
-iD8DBQFDTWftZCuimE51gxcRAn/CAJ9DeHdR+R6FSojuCe6mwGGFGCpi2wCgxG+w
-0qZWZ9xai+NvI1uK02OyFVo=
-=Ezf7
+iD8DBQFFsRgPZCuimE51gxcRAiz1AJ488V1kO2gnhAnd8YikVllM2aG6vQCePqTP
++Ywij38+9pGfdVV6gzbI0xU=
+=GyZp
 -----END PGP SIGNATURE-----

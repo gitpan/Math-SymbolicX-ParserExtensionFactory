@@ -1,6 +1,6 @@
 ---
 name: Math-SymbolicX-ParserExtensionFactory
-version: 2.00
+version: 2.01
 author:
   - 'Steffen Mueller <symbolic-module at steffen-mueller dot net>'
 abstract: Generate parser extensions
@@ -21,8 +21,8 @@ recommends:
 provides:
   Math::SymbolicX::ParserExtensionFactory:
     file: lib/Math/SymbolicX/ParserExtensionFactory.pm
-    version: 2.00
-generated_by: Module::Build version 0.2806
+    version: 2.01
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

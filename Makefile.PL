@@ -2,18 +2,18 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'Math::SymbolicX::ParserExtensionFactory',
-          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Math/SymbolicX/ParserExtensionFactory.pm',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
-                           'Math::Symbolic' => '0.506',
-                           'Text::Balanced' => '0',
-                           'Memoize' => '1.01',
                            'Data::Dumper' => '0',
-                           'Parse::RecDescent' => '0'
-                         }
+                           'Math::Symbolic' => '0.506',
+                           'Memoize' => '1.01',
+                           'Parse::RecDescent' => '0',
+                           'Test::More' => '0',
+                           'Text::Balanced' => '0'
+                         },
+          'INSTALLDIRS' => 'site',
+          'EXE_FILES' => [],
+          'PL_FILES' => {}
         )
 ;

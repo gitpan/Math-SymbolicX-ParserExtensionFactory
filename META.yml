@@ -1,15 +1,15 @@
 ---
 name: Math-SymbolicX-ParserExtensionFactory
-version: 2.01
+version: 3.01
 author:
   - 'Steffen Mueller <symbolic-module at steffen-mueller dot net>'
 abstract: Generate parser extensions
 license: perl
 resources:
-  license: http://dev.perl.org/licenses/
+  license: ~
 requires:
   Data::Dumper: 0
-  Math::Symbolic: 0.506
+  Math::Symbolic: 0.601
   Memoize: 1.01
   Parse::RecDescent: 0
   Text::Balanced: 0
@@ -21,8 +21,8 @@ recommends:
 provides:
   Math::SymbolicX::ParserExtensionFactory:
     file: lib/Math/SymbolicX/ParserExtensionFactory.pm
-    version: 2.01
-generated_by: Module::Build version 0.2808
+    version: 3.01
+generated_by: Module::Build version 0.31012
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

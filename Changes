@@ -1,5 +1,8 @@
 Revision history for Perl extension Math::SymbolicX::ParserExtensionFactory.
 
+3.01  Thu Feb  5 21:51 2009
+  - Support for object-private parser extensions.
+
 2.01  Sun Jan 27 14:36 2007
 * This is a critical bug fix release for 2.00 *
   - Fix bug in the extension regex that would trigger only if there are

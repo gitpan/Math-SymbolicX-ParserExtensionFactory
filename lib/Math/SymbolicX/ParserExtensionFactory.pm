@@ -10,9 +10,9 @@ use Text::Balanced;
 our $BeenUsedBefore    = {};
 our $Functions         = {};
 our $Order             = [];
-our $RegularExpression = qr//;
+our $RegularExpression = qr/(?!)/;
 
-our $VERSION = '3.01';
+our $VERSION = '3.02';
 
 sub import {
   my $package = shift;
@@ -74,18 +74,18 @@ sub _extend_parser_recdescent {
   my $parser = shift;
   $parser->{__PRIV_EXT_FUNC_REGEX} = qr/(?!)/;
   $parser->Extend(<<'EXTENSION');
-function: /$thisparser->{__PRIV_EXT_FUNC_REGEX}(?=\s*\()/ {extract_bracketed($text, '(')}
+function: /$thisparser->{__PRIV_EXT_FUNC_REGEX}\s*(?=\()/ {extract_bracketed($text, '(')}
   {
-    warn 'function_msx_parser_extension_factory ' 
+    warn 'function_private_msx_parser_extension_factory ' 
       if $Math::Symbolic::Parser::DEBUG;
     my $function = $item[1];
+    $function =~ s/\s+$//;
     my $argstring = substr($item[2], 1, length($item[2])-2);
-    die "Invalid extension function and/or arguments '$function$item[2]'".
+    die "Invalid extension function and/or arguments '$function$item[2]' ".
         "(Math::SymbolicX::ParserExtensionFactory)"
       if not exists
          $thisparser->{__PRIV_EXT_FUNCTIONS}{$function};
-    my $result =
-      $thisparser->{__PRIV_EXT_FUNCTIONS}{$function}->($argstring);
+    my $result = $thisparser->{__PRIV_EXT_FUNCTIONS}{$function}->($argstring);
     die "Invalid result of extension function application "
         ."('$item[1]($argstring)'). Also refer to the "
         ."Math::SymbolicX::ParserExtensionFactory manpage."
@@ -93,18 +93,18 @@ function: /$thisparser->{__PRIV_EXT_FUNC_REGEX}(?=\s*\()/ {extract_bracketed($te
     $return = $result;
   }
 
-  | /$Math::SymbolicX::ParserExtensionFactory::RegularExpression(?=\s*\()/ {extract_bracketed($text, '(')}
+  | /$Math::SymbolicX::ParserExtensionFactory::RegularExpression\s*(?=\()/ {extract_bracketed($text, '(')}
   {
-    warn 'function_msx_parser_extension_factory ' 
+    warn 'function_global_msx_parser_extension_factory ' 
       if $Math::Symbolic::Parser::DEBUG;
     my $function = $item[1];
+    $function =~ s/\s+$//;
     my $argstring = substr($item[2], 1, length($item[2])-2);
-    die "Invalid extension function and/or arguments '$function$item[2]'".
+    die "Invalid extension function and/or arguments '$function$item[2]' ".
         "(Math::SymbolicX::ParserExtensionFactory)"
       if not exists
          $Math::SymbolicX::ParserExtensionFactory::Functions->{$function};
-    my $result =
-      $Math::SymbolicX::ParserExtensionFactory::Functions->{$function}->($argstring);
+    my $result = $Math::SymbolicX::ParserExtensionFactory::Functions->{$function}->($argstring);
     die "Invalid result of extension function application "
         ."('$item[1]($argstring)'). Also refer to the "
         ."Math::SymbolicX::ParserExtensionFactory manpage."
@@ -119,6 +119,7 @@ EXTENSION
 sub _regenerate_regex {
   my @arrays = @_;
   my $string = join '|', map {"\Q$_\E"} map {@$_} @arrays;
+  return qr/(?!)/ if $string eq '';
   return qr/(?:$string)/;
 }
 
